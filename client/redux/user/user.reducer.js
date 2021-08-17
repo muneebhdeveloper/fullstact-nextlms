@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   currentUser: null,
   error: "",
   isFetching: false,
+  isAuthenticated: false,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -34,6 +35,22 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         currentUser: null,
         error: "",
+      };
+
+    case UserActionTypes.USER_AUTHENTICATION_SUCCESS:
+      return {
+        ...state,
+        currentUser: action.payload,
+        isAuthenticated: true,
+        error: "",
+      };
+
+    case UserActionTypes.USER_AUTHENTICATION_FAILURE:
+      return {
+        ...state,
+        isAuthenticated: false,
+        currentUser: null,
+        error: action.payload,
       };
 
     default:

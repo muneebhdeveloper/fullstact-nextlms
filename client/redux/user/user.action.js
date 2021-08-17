@@ -22,3 +22,17 @@ export const logOutUser = () => ({
 export const logOutUserSuccess = () => ({
   type: UserActionTypes.LOG_OUT_USER_SUCCESS,
 });
+
+export const userAuthenticationStart = () => ({
+  type: UserActionTypes.USER_AUTHENTICATION_START,
+});
+
+export const userAuthenticationSuccess = (currentUser) => ({
+  type: UserActionTypes.USER_AUTHENTICATION_SUCCESS,
+  payload: currentUser,
+});
+
+export const userAuthenticationFailure = (errorMessage) => ({
+  type: UserActionTypes.USER_AUTHENTICATION_FAILURE,
+  payload: errorMessage,
+});

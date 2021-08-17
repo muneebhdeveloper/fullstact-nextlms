@@ -83,8 +83,18 @@ const logout = function (req, res) {
   return res.json({ message: "Signout Success" });
 };
 
+const currentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select("-password").exec();
+    return res.json(user);
+  } catch (error) {
+    console.log("Error", error.message);
+  }
+};
+
 module.exports = {
   register,
   login,
   logout,
+  currentUser,
 };
